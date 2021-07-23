@@ -1,7 +1,7 @@
 Python 3 Android
 ================
 
-This is an experimental set of build scripts that will cross-compile Python 3.9.0 for an Android device.
+This is an experimental set of build scripts that will cross-compile Python 3.9.5 for an Android device.
 
 Prerequisites
 -------------
@@ -10,7 +10,7 @@ Building requires:
 
 1. Linux. This project might work on other systems supported by NDK but no guarantee.
 2. Android NDK r21 installed and environment variable ``$ANDROID_NDK`` points to its root directory. Older NDK may not work and NDK <= r18 is known to be incompatible.
-3. `python3.9` binary from Python 3.9.0 on the building host. It's recommended to use exactly that Python version, which can be installed via [pyenv](https://github.com/yyuu/pyenv). Don't forget to check that `python3.9` is available in $PATH.
+3. `python3.9` binary from Python 3.9.5 on the building host. It's recommended to use exactly that Python version, which can be installed via [pyenv](https://github.com/yyuu/pyenv). Don't forget to check that `python3.9` is available in $PATH.
 4. `tic` binary from ncurses 6.2 on the building host. Slightly newer or older version may also work but no guarantee.
 5. A case-sensitive filesystem. The default filesystem on Windows and macOS is case-insensitive, and building may fail.
 
@@ -32,7 +32,7 @@ Build using Docker/Podman
 Download the latest NDK for Linux from https://developer.android.com/ndk/downloads and extract it.
 
 ```
-docker run --rm -it -v $(pwd):/python3-android -v /path/to/android-ndk:/android-ndk:ro --env ARCH=arm --env ANDROID_API=21 python:3.9.0-slim /python3-android/docker-build.sh
+docker run --rm -it -v $(pwd):/python3-android -v /path/to/android-ndk:/android-ndk:ro --env ARCH=arm --env ANDROID_API=21 docker.io/library/python:3.9.5-slim /python3-android/docker-build.sh
 ```
 
 Here `/path/to/android-ndk` should be replaced with the actual for NDK (e.g., `/opt/android-ndk`).
