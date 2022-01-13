@@ -36,12 +36,12 @@ jobs:
     strategy:
       matrix:
         env:
-          - { ARCH: arm,     API: 21 }
-          - { ARCH: arm64,   API: 21 }
-          - { ARCH: x86,     API: 21 }
-          - { ARCH: x86_64,  API: 21 }
-    env:
-      PYVER: 3.9.0
+          - { ARCH: arm,     API: 21, PYVER: 3.9.0 }
+          - { ARCH: arm64,   API: 21, PYVER: 3.9.0 }
+          #- { ARCH: x86,     API: 21 }
+          #- { ARCH: x86_64,  API: 21 }
+    #env:
+    #  PYVER: 3.9.0
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
@@ -50,12 +50,12 @@ jobs:
         docker run --rm -v $(pwd):/python3-android \
             --env ARCH=${{ matrix.env.ARCH }} \
             --env ANDROID_API=${{ matrix.env.API }} \
-            python:$PYVER-slim /python3-android/docker-build.sh
+            python:${{ matrix.env.PYVER }}-slim /python3-android/docker-build.sh
     - name: Create package
       id: create_package
       run: |
         sudo apt-get -y update && sudo apt-get -y install libarchive-tools xz-utils
-        package_filename=python3-android-$PYVER-${{ matrix.env.ARCH }}-${{ matrix.env.API }}.tar.xz
+        package_filename=python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}-${{ matrix.env.API }}.tar.xz
         # sudo needed as files created by docker may not be readable by the current user
         cd build && sudo bsdtar --xz -cf $package_filename *
         echo ::set-output name=package_filename::$package_filename
