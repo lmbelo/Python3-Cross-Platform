@@ -56,7 +56,7 @@ jobs:
             --env ARCH=${{ matrix.env.ARCH }} \
             --env ANDROID_API=${{ matrix.env.API }} \
             --env PYVER=${{ matrix.env.PYVER }} \
-            python:${{ 3.9.0 }}-slim /python3-android/docker-build.sh
+            python:3.9.0-slim /python3-android/docker-build.sh
     - name: Create package
       id: create_package
       run: |
