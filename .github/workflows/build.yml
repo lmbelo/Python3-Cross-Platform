@@ -65,7 +65,14 @@ jobs:
         # sudo needed as files created by docker may not be readable by the current user
         cd build && sudo bsdtar --xz -cf $package_filename *
         echo ::set-output name=package_filename::$package_filename
-
+    - name: Status
+      run: |
+        ls -a
+    - name: Save build
+      uses: actions/upload-artifact@v2
+      with:
+        path: build/
+        if-no-files-found: error
 
 
     - name: Load Release URL File from release job
