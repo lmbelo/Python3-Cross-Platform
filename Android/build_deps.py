@@ -32,7 +32,7 @@ class Package:
             '--prefix=/usr',
             '--libdir=/usr/lib',
             '--host=' + self.target_arch.ANDROID_TARGET,
-            '--enable-shared',
+            '--disable-shared',
         ] + getattr(self, 'configure_args', []))
 
     def make(self):

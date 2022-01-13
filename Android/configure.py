@@ -10,7 +10,7 @@ def main():
     # CPython requires explicit --build, and its value does not matter
     # (e.g., x86_64-linux-gnu should also work on macOS)
     cmd = [
-        'bash', './configure',
+        'bash', './configure --enable-shared',
         '--host=' + ARCHITECTURES[args.target_arch_name].ANDROID_TARGET,
         '--build=x86_64-linux-gnu',
         'ac_cv_file__dev_ptmx=yes',
