@@ -76,7 +76,8 @@ class LibUUID(Package):
     configure_args = ['--disable-all-programs', '--enable-libuuid']
 
 class NCurses(Package):
-    source = 'https://invisible-mirror.net/archives/ncurses/ncurses-6.2.tar.gz'
+    #source = 'https://invisible-mirror.net/archives/ncurses/ncurses-6.2.tar.gz'
+    source = 'https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.2.tar.gz'
     # Not stripping the binaries as there is no easy way to specify the strip program for Android
     configure_args = ['--without-ada', '--enable-widec', '--without-debug', '--without-cxx-binding', '--disable-stripping']
 
