@@ -12,8 +12,7 @@ if [ ! -d "$ANDROID_NDK" ] ; then
     # In general we don't want download NDK for every build, but it is simpler to do it here
     # for CI builds
     NDK_VER=r21d
-    # apt-get install -y wget bsdtar
-    apt-get install -y unzip
+    apt-get install -y wget unzip #bsdtar    
     wget --no-verbose https://dl.google.com/android/repository/android-ndk-$NDK_VER-linux-x86_64.zip
     # bsdtar xf android-ndk-${NDK_VER}-linux-x86_64.zip
     unzip android-ndk-${NDK_VER}-linux-x86_64.zip
