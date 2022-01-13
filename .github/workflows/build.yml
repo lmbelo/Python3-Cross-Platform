@@ -36,14 +36,14 @@ jobs:
     strategy:
       matrix:
         env:
-          - { ARCH: arm,   API: 21, PYVER: 3.7.0 }
-          - { ARCH: arm64, API: 21, PYVER: 3.7.0 }
+          #- { ARCH: arm,   API: 21, PYVER: 3.7.0 }
+          #- { ARCH: arm64, API: 21, PYVER: 3.7.0 }
           
-          - { ARCH: arm,   API: 21, PYVER: 3.8.0 }
-          - { ARCH: arm64, API: 21, PYVER: 3.8.0 }
+          #- { ARCH: arm,   API: 21, PYVER: 3.8.0 }
+          #- { ARCH: arm64, API: 21, PYVER: 3.8.0 }
           
-          - { ARCH: arm,   API: 21, PYVER: 3.9.0 }
-          - { ARCH: arm64, API: 21, PYVER: 3.9.0 }
+          #- { ARCH: arm,   API: 21, PYVER: 3.9.0 }
+          #- { ARCH: arm64, API: 21, PYVER: 3.9.0 }
 
           - { ARCH: arm,   API: 21, PYVER: 3.10.0 }
           - { ARCH: arm64, API: 21, PYVER: 3.10.0 }
@@ -65,6 +65,9 @@ jobs:
         # sudo needed as files created by docker may not be readable by the current user
         cd build && sudo bsdtar --xz -cf $package_filename *
         echo ::set-output name=package_filename::$package_filename
+
+
+
     - name: Load Release URL File from release job
       uses: actions/download-artifact@v1
       if: contains(github.ref, '-android')
