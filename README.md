@@ -69,6 +69,10 @@ import urllib.request
 print(urllib.request.urlopen('https://httpbin.org/ip').read().decode('ascii'))
 ```
 
+Builts
+------------
+A set of Python [3.8.0, 3.9.0 and 3.10.0] for Android ready to use.
+
 
 Known Issues
 ------------
