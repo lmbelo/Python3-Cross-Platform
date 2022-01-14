@@ -39,13 +39,13 @@ jobs:
           #- { ARCH: arm,   API: 21, PYVER: 3.7.0 }
           #- { ARCH: arm64, API: 21, PYVER: 3.7.0 }
           
-          #- { ARCH: arm,   API: 21, PYVER: 3.8.0 }
-          #- { ARCH: arm64, API: 21, PYVER: 3.8.0 }
+          - { ARCH: arm,   API: 21, PYVER: 3.8.0 }
+          - { ARCH: arm64, API: 21, PYVER: 3.8.0 }
           
-          #- { ARCH: arm,   API: 21, PYVER: 3.9.0 }
-          #- { ARCH: arm64, API: 21, PYVER: 3.9.0 }
+          - { ARCH: arm,   API: 21, PYVER: 3.9.0 }
+          - { ARCH: arm64, API: 21, PYVER: 3.9.0 }
 
-          #- { ARCH: arm,   API: 21, PYVER: 3.10.0 }
+          - { ARCH: arm,   API: 21, PYVER: 3.10.0 }
           - { ARCH: arm64, API: 21, PYVER: 3.10.0 }
     steps:
     - name: Checkout main repo
