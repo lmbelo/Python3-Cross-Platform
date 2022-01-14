@@ -50,6 +50,9 @@ jobs:
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
+    - name: Clean build
+      run: |
+        bash clean.sh
     - name: Building
       run: |
         docker run --rm -v $(pwd):/python3-android \
@@ -71,7 +74,7 @@ jobs:
     - name: Save build
       uses: actions/upload-artifact@v2
       with:
-        path: build/
+        path: build/${{ steps.create_package.outputs.package_filename }}
         if-no-files-found: error
     - name: Load Release URL File from release job
       uses: actions/download-artifact@v1
