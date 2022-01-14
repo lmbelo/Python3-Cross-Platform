@@ -2,7 +2,7 @@ Python 3 Android
 ================
 
 This is an experimental set of build scripts that will cross-compile Python [3.8.0, 3.9.0 and 3.10.0] for an Android device.
-This project is a supplier for the [DelphiFMX](https://github.com/Embarcadero/DelphiFMX4Python) project.
+This project is a supplier for the [delphi4python](https://github.com/Embarcadero/python4delphi) project.
 
 Prerequisites
 -------------
