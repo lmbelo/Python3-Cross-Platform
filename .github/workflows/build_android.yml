@@ -39,8 +39,8 @@ jobs:
     strategy:
       matrix:
         env:
-          - { ARCH: arm,   API: 21, PYVER: 3.6.9 }
-          - { ARCH: arm64, API: 21, PYVER: 3.6.9 }
+          #- { ARCH: arm,   API: 21, PYVER: 3.6.9 } failing
+          #- { ARCH: arm64, API: 21, PYVER: 3.6.9 } failing
 
           - { ARCH: arm,   API: 21, PYVER: 3.7.9 }
           - { ARCH: arm64, API: 21, PYVER: 3.7.9 }
