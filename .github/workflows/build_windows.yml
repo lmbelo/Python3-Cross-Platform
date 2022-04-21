@@ -53,40 +53,10 @@ jobs:
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
+    - name: Checkout tools repo
+      uses: actions/checkout@v3
+      with:
+        repository: python/cpython
     - name: Building
       run: |      
-        clang --version   
-    - name: Create package
-      id: create_package
-      run: |
-        sudo apt-get -y update && sudo apt-get -y install libarchive-tools xz-utils
-        package_filename=python3-linux-${{ matrix.env.PYVER }}.tar.xz
-        # sudo needed as files created by docker may not be readable by the current user
-        cd build && sudo bsdtar --xz -cf $package_filename *
-        echo ::set-output name=package_filename::$package_filename
-    - name: Save build
-      uses: actions/upload-artifact@v2
-      with:
-        path: python3-linux/build/${{ steps.create_package.outputs.package_filename }}
-        if-no-files-found: error
-    - name: Load Release URL File from release job
-      uses: actions/download-artifact@v1
-      if: contains(github.ref, '-android')
-      with:
-        name: release_url
-    - name: Get Release File Name & Upload URL
-      id: get_release_info
-      if: contains(github.ref, '-android')
-      run: |
-        value=`cat release_url/release_url.txt`
-        echo ::set-output name=upload_url::$value
-    - name: Upload Release Asset
-      if: contains(github.ref, '-android')
-      uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.get_release_info.outputs.upload_url }}
-        asset_path: build/${{ steps.create_package.outputs.package_filename }}
-        asset_name: ${{ steps.create_package.outputs.package_filename }}
-        asset_content_type: application/x-xz
+        dir
