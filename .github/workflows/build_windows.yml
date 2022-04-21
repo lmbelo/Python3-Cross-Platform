@@ -49,5 +49,10 @@ jobs:
     - name: Create package
       id: create_package
       run: |        
-        7z a zip usr\*
+        7z a python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }} usr\*
         ls
+    - name: Save build
+      uses: actions/upload-artifact@v2
+      with:
+        path: python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
+        if-no-files-found: error
