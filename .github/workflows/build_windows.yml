@@ -48,7 +48,6 @@ jobs:
         ls
     - name: Create package
       id: create_package
-      run: |
-        package_filename=python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
+      run: |        
         7z a zip usr\*
         ls
