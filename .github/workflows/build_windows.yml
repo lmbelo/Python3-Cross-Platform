@@ -9,9 +9,9 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: python3-windows    
+    #defaults:
+    #  run:
+    #    working-directory: python3-windows    
     strategy:
       matrix:
         env:
