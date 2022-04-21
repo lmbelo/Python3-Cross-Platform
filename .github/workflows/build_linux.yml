@@ -1,13 +1,10 @@
-name: Build Android
+name: Build Linux
 
 on: 
   push:
-
   # Manual run
   workflow_dispatch:
 
-# Release-related code borrowed from
-# https://github.com/actions/create-release/issues/14#issuecomment-555379810
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -35,50 +32,44 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./python3-android    
+        working-directory: ./python3-linux    
     strategy:
       matrix:
         env:
-          #- { ARCH: arm,   API: 21, PYVER: 3.6.9 } failing
-          #- { ARCH: arm64, API: 21, PYVER: 3.6.9 } failing
+          - { ARCH: x86_64, PYVER: 3.6.9 }
 
-          - { ARCH: arm,   API: 21, PYVER: 3.7.9 }
-          - { ARCH: arm64, API: 21, PYVER: 3.7.9 }
+          - { ARCH: x86_64, PYVER: 3.7.9 }
           
-          - { ARCH: arm,   API: 21, PYVER: 3.8.9 }
-          - { ARCH: arm64, API: 21, PYVER: 3.8.9 }
+          - { ARCH: x86_64, PYVER: 3.8.9 }
           
-          - { ARCH: arm,   API: 21, PYVER: 3.9.9 }
-          - { ARCH: arm64, API: 21, PYVER: 3.9.9 }
+          - { ARCH: x86_64, PYVER: 3.9.9 }
 
-          - { ARCH: arm,   API: 21, PYVER: 3.10.4 }
-          - { ARCH: arm64, API: 21, PYVER: 3.10.4 }
+          - { ARCH: x86_64, PYVER: 3.10.4 }
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
     - name: Update scripts permission
       run: |        
         find -type f -iname "*.sh" -exec chmod +x {} \;
-        find ./Android -type f -iname "*.py" -exec chmod +x {} \;
+        find ./Linux -type f -iname "*.py" -exec chmod +x {} \;
     - name: Building
       run: |
-        docker run --rm -v $(pwd):/python3-android \
+        docker run --rm -v $(pwd):/python3-linux \
             --env ARCH=${{ matrix.env.ARCH }} \
-            --env ANDROID_API=${{ matrix.env.API }} \
             --env PYVER=${{ matrix.env.PYVER }} \
-            python:${{ matrix.env.PYVER }}-slim /python3-android/docker-build.sh        
+            python:${{ matrix.env.PYVER }}-slim /python3-linux/docker-build.sh        
     - name: Create package
       id: create_package
       run: |
         sudo apt-get -y update && sudo apt-get -y install libarchive-tools xz-utils
-        package_filename=python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}-${{ matrix.env.API }}.tar.xz
+        package_filename=python3-linux-${{ matrix.env.PYVER }}.tar.xz
         # sudo needed as files created by docker may not be readable by the current user
         cd build && sudo bsdtar --xz -cf $package_filename *
         echo ::set-output name=package_filename::$package_filename
     - name: Save build
       uses: actions/upload-artifact@v2
       with:
-        path: python3-android/build/${{ steps.create_package.outputs.package_filename }}
+        path: python3-linux/build/${{ steps.create_package.outputs.package_filename }}
         if-no-files-found: error
     - name: Load Release URL File from release job
       uses: actions/download-artifact@v1
