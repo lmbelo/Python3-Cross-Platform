@@ -24,7 +24,7 @@ jobs:
           #- { ARCH: win32, PYVER: 3.8.9 }
           #- { ARCH: x64, PYVER: 3.9.9 }
 
-          - { ARCH: Win32, PYVER: 3.9.9 }
+          #- { ARCH: Win32, PYVER: 3.9.9 }
           - { ARCH: x64, PYVER: 3.9.9 }
 
           #- { ARCH: win32, PYVER: 3.10.4 }
@@ -40,8 +40,15 @@ jobs:
     - name: Building
       shell: pwsh
       run: |      
-        ls
-        ls -l PCBuild
         PCBuild\build.bat -p ${{ matrix.env.ARCH }}
-        ls
         ls -l PCBuild
+    - name: Copy distribution
+      run: |
+        Copy-Item -Path PCBuild\amd64 -Destination usr -PassThru
+        ls
+    - name: Create package
+      id: create_package
+      run: |
+        package_filename=python3-windows-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
+        7z a zip usr\*
+        ls
