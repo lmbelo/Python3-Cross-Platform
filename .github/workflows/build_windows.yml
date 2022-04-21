@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: ./python3-linux    
+        working-directory: ./python3-windows    
     strategy:
       matrix:
         env:
@@ -32,7 +32,7 @@ jobs:
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
-    - name: Checkout tools repo
+    - name: Checkout python repo
       uses: actions/checkout@v3
       with:
         repository: python/cpython
