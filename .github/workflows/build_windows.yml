@@ -42,6 +42,7 @@ jobs:
       run: |      
         PCBuild\build.bat -p ${{ matrix.env.ARCH }}
         ls -l PCBuild
+        ls -l PCBuild\amd64
     - name: Copy distribution
       run: |
         robocopy PCBuild\amd64 usr * /s
