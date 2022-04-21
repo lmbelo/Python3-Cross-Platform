@@ -24,7 +24,7 @@ jobs:
           #- { ARCH: win32, PYVER: 3.8.9 }
           #- { ARCH: x64, PYVER: 3.9.9 }
 
-          #- { ARCH: win32, PYVER: 3.9.9 }
+          - { ARCH: Win32, PYVER: 3.9.9 }
           - { ARCH: x64, PYVER: 3.9.9 }
 
           #- { ARCH: win32, PYVER: 3.10.4 }
