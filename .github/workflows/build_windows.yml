@@ -59,4 +59,4 @@ jobs:
         repository: python/cpython
     - name: Building
       run: |      
-        ls
+        ls -l
