@@ -41,3 +41,4 @@ jobs:
       run: |      
         ls
         PCBuild\build.bat -p x64 -d
+        ls
