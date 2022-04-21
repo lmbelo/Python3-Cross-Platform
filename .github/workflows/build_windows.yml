@@ -46,6 +46,7 @@ jobs:
       run: |
         Copy-Item -Path PCBuild\amd64 -Destination usr -PassThru
         ls
+        ls -l usr
     - name: Create package
       id: create_package
       run: |        
