@@ -1,7 +1,7 @@
 Python 3 Android
 ================
 
-This is an experimental set of build scripts that will cross-compile Python [3.8.0, 3.9.0 and 3.10.0] for an Android device.
+This is an experimental set of build scripts that will cross-compile Python [3.7.9, 3.8.9, 3.9.9 and 3.10.4] for Android.
 This project is a supplier for the [delphi4python](https://github.com/Embarcadero/python4delphi) project.
 
 Prerequisites
@@ -24,8 +24,8 @@ Build
 -----
 
 1. Run `./clean.sh` for good measure.
-2. For every API Level/architecture combination you wish to build for:
-   * `ARCH=arm ANDROID_API=21 ./build.sh` to build everything!
+2. For every API Level/architecture/Python version combination you wish to build for:
+   * `ARCH=arm ANDROID_API=21 PYVER=3.10.4 ./build.sh` to build everything!
 
 Build using Docker/Podman
 ------------------
@@ -33,7 +33,7 @@ Build using Docker/Podman
 Download the latest NDK for Linux from https://developer.android.com/ndk/downloads and extract it.
 
 ```
-docker run --rm -it -v $(pwd):/python3-android -v /path/to/android-ndk:/android-ndk:ro --env ARCH=arm --env ANDROID_API=21 python:3.9.0-slim /python3-android/docker-build.sh
+docker run --rm -it -v $(pwd):/python3-android -v /path/to/android-ndk:/android-ndk:ro --env ARCH=arm --env ANDROID_API=21 --env PYVER=3.10.4 python:3.9.0-slim /python3-android/docker-build.sh
 ```
 
 Here `/path/to/android-ndk` should be replaced with the actual for NDK (e.g., `/opt/android-ndk`).
@@ -68,11 +68,6 @@ Check SSL/TLS functionality with:
 import urllib.request
 print(urllib.request.urlopen('https://httpbin.org/ip').read().decode('ascii'))
 ```
-
-Builts
-------------
-A set of Python [3.8.0, 3.9.0 and 3.10.0] for Android ready to use.
-
 
 Known Issues
 ------------
