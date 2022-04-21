@@ -39,4 +39,4 @@ jobs:
     - name: Building
       shell: pwsh
       run: |      
-        ls -l
+        ls
