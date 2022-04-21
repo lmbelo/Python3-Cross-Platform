@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         env:
-          - { ARCH: win32, PYVER: 3.6.9 }
+          #- { ARCH: win32, PYVER: 3.6.9 }
           #- { ARCH: x64, PYVER: 3.6.9 }
 
           #- { ARCH: win32, PYVER: 3.7.9 }
@@ -25,7 +25,7 @@ jobs:
           #- { ARCH: x64, PYVER: 3.9.9 }
 
           #- { ARCH: win32, PYVER: 3.9.9 }
-          #- { ARCH: x64, PYVER: 3.9.9 }
+          - { ARCH: x64, PYVER: 3.9.9 }
 
           #- { ARCH: win32, PYVER: 3.10.4 }
           #- { ARCH: x64, PYVER: 3.10.4 }
@@ -40,6 +40,8 @@ jobs:
     - name: Building
       shell: pwsh
       run: |      
+        ls
         ls -l PCBuild
         PCBuild\build.bat -p ${{ matrix.env.ARCH }}
+        ls
         ls -l PCBuild
