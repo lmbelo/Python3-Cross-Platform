@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: ./python3-windows    
+        working-directory: python3-windows    
     strategy:
       matrix:
         env:
