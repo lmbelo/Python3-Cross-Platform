@@ -31,17 +31,17 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: tpoechtrager/osxcross
-        path: ./python3-macos/cross-toolchain
+        path: ./python3-macos/cross-toolchain    
+    - name: Update scripts permission
+      run: |        
+        find -type f -iname "*.sh" -exec chmod +x {} \;
+        find ./MacOS -type f -iname "*.py" -exec chmod +x {} \;
+    - name: Building
+      run: |
+        docker run --rm -v $(pwd):/python3-macos \
+            --env ARCH=${{ matrix.env.ARCH }} \
+            --env PYVER=${{ matrix.env.PYVER }} \
+            python:${{ matrix.env.PYVER }}-slim /python3-macos/docker-build.sh    
     - name: Check files
       run: |
-        ls -R
-    #- name: Update scripts permission
-    #  run: |        
-    #    find -type f -iname "*.sh" -exec chmod +x {} \;
-    #    find ./MacOS -type f -iname "*.py" -exec chmod +x {} \;
-    #- name: Building
-    #  run: |
-    #    docker run --rm -v $(pwd):/python3-macos \
-    #        --env ARCH=${{ matrix.env.ARCH }} \
-    #        --env PYVER=${{ matrix.env.PYVER }} \
-    #        python:${{ matrix.env.PYVER }}-slim /python3-macos/docker-build.sh            
+        ls -R        
