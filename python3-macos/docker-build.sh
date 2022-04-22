@@ -11,9 +11,7 @@ export MACOS_SDK=/macos-sdk
 ls -l
 
 if [ ! -d "$ANDROID_NDK" ] ; then
-    cd python3-macos/cross-toolchain/tarballs
-    curl -vLO https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.14.sdk.tar.xz
-    cd ../../
+    curl -vLO https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.14.sdk.tar.xz --output python3-macos/cross-toolchain/tarballs/MacOSX10.14.sdk.tar.xz
 fi
 
 ls -R
