@@ -39,17 +39,17 @@ jobs:
         ref: v${{ matrix.env.PYVER }}
     - name: Building      
       run: |      
-        PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e    
+        PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e -c Release   
     - name: Create package x64
       if: ${{ matrix.env.ARCH }} == 'x64'
       run: |       
-        Rename-Item PCBuild\amd64 PCBuild\${{ matrix.env.ARCH }} 
+        Rename-Item PCBuild\amd64 ${{ matrix.env.ARCH }} 
         cd PCBuild\${{ matrix.env.ARCH }}
         7z a -t7z python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r 
     - name: Create package x86
       if: ${{ matrix.env.ARCH }} == 'Win32'
       run: |        
-        Rename-Item PCBuild\amd64 PCBuild\${{ matrix.env.ARCH }} 
+        Rename-Item PCBuild\amd64 ${{ matrix.env.ARCH }} 
         cd PCBuild\${{ matrix.env.ARCH }}
         7z a -t7z python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r   
     - name: Save build
