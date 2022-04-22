@@ -37,7 +37,7 @@ jobs:
     #  with:
     #    repository: python/cpython
     #    ref: v${{ matrix.env.PYVER }}
-    - name: Building      
+    #- name: Building      
     #  run: |      
     #    PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e -c Release   
     - name: Create package
