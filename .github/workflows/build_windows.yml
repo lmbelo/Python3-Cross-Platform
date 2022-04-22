@@ -42,8 +42,7 @@ jobs:
     #    PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e -c Release   
     - name: Create package
       run: |
-        cd C:\msys64\mingw32\bin
-        ls
+        clang --version
       #  7z a python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip PCBuild\*
       #run: |       
       #  if (Test-Path -Path "PCBuild\amd64") {
@@ -53,9 +52,9 @@ jobs:
       #  }         
       #  cd PCBuild\${{ matrix.env.ARCH }}
       #  7z a -t7z python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r      
-    - name: Save build
-      uses: actions/upload-artifact@v2
-      with:
-        #path: PCBuild\${{ matrix.env.ARCH }}\python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
-        path: python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
-        if-no-files-found: error
+    #- name: Save build
+    #  uses: actions/upload-artifact@v2
+    #  with:
+    #    #path: PCBuild\${{ matrix.env.ARCH }}\python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
+    #    path: python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
+    #    if-no-files-found: error
