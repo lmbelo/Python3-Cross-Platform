@@ -41,14 +41,12 @@ jobs:
       run: |      
         PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e    
     - name: Create package x64
-      id: create_package
       if: ${{ matrix.env.ARCH }} == 'x64'
       run: |       
         rename PCBuild\amd64 PCBuild\${{ matrix.env.ARCH }} 
         cd PCBuild\${{ matrix.env.ARCH }}
         7z a -t7z python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r 
     - name: Create package x86
-      id: create_package 
       if: ${{ matrix.env.ARCH }} == 'Win32'
       run: |        
         rename PCBuild\amd64 PCBuild\${{ matrix.env.ARCH }} 
