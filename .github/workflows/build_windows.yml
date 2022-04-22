@@ -42,11 +42,12 @@ jobs:
         PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e -c Release   
     - name: Create package
       run: |       
-        if (Test-Path -Path "PCBuild\amd64") {          
-          cd PCBuild\amd64
+        if (Test-Path -Path "PCBuild\amd64") {
+          Rename-Item PCBuild\amd64 ${{ matrix.env.ARCH }}
         } elseif (Test-Path -Path "PCBuild\win32") {
-          cd PCBuild\win32   
+          Rename-Item PCBuild\win32 ${{ matrix.env.ARCH }}   
         }         
+        cd PCBuild\${{ matrix.env.ARCH }}
         7z a -t7z python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r      
     - name: Save build
       uses: actions/upload-artifact@v2
