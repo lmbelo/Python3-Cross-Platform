@@ -55,5 +55,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         #path: PCBuild\${{ matrix.env.ARCH }}\python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
-        path: PCBuild\python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
+        path: python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
         if-no-files-found: error
