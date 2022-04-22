@@ -40,18 +40,18 @@ jobs:
     - name: Building
       shell: pwsh
       run: |      
-        PCBuild\build.bat -p ${{ matrix.env.ARCH }}
+        ls -l PCBuild
+        PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e
         ls -l PCBuild
         ls -l PCBuild\amd64
     - name: Copy distribution
       run: |
         robocopy PCBuild\amd64 usr * /s
-        ls
-        ls -l usr
+        ls        
     - name: Create package
       id: create_package
       run: |        
-        7z a python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip usr\*
+        7z a python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip usr
         ls
     - name: Save build
       uses: actions/upload-artifact@v2
