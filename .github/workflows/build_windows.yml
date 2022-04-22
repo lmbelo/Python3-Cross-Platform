@@ -37,22 +37,23 @@ jobs:
       with:
         repository: python/cpython
         ref: v${{ matrix.env.PYVER }}
-    - name: Building
-      shell: pwsh
+    - name: Building      
       run: |      
-        ls -l PCBuild
-        PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e
-        ls -l PCBuild
-        ls -l PCBuild\amd64
-    #- name: Copy distribution
-    #  run: |
-    #    robocopy /S PCBuild\amd64 usr       
+        PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e    
     - name: Create package
       id: create_package
+      if: ${{ matrix.env.ARCH }} == 'x64'
+      run: |       
+        rename PCBuild\amd64 PCBuild\${{ matrix.env.ARCH }} 
+        cd PCBuild\${{ matrix.env.ARCH }}
+        7z a -t7z python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r  
+      if: ${{ matrix.env.ARCH }} == 'Win32'
       run: |        
-        7z a -t7z python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip PCBuild\amd64\* -r       
+        rename PCBuild\amd64 PCBuild\${{ matrix.env.ARCH }} 
+        cd PCBuild\${{ matrix.env.ARCH }}
+        7z a -t7z python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r   
     - name: Save build
       uses: actions/upload-artifact@v2
       with:
-        path: python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
+        path: PCBuild\${{ matrix.env.ARCH }}\python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip
         if-no-files-found: error
