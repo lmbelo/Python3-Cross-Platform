@@ -22,6 +22,7 @@ fi
 
 cp -r Linux $SRCDIR
 pushd $SRCDIR
+patch -Np1 -i ./Linux/unversioned-libpython.patch
 autoreconf -ifv
 which python
 python -m pip install dataclasses

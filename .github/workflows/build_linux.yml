@@ -2,6 +2,7 @@ name: Build Linux
 
 on: 
   push:
+
   # Manual run
   workflow_dispatch:
 
@@ -36,7 +37,7 @@ jobs:
     strategy:
       matrix:
         env:
-          - { ARCH: x86_64, PYVER: 3.6.9 }
+          #- { ARCH: x86_64, PYVER: 3.6.9 }
 
           - { ARCH: x86_64, PYVER: 3.7.9 }
           
