@@ -41,7 +41,4 @@ jobs:
         docker run --rm -v $(pwd):/python3-macos \
             --env ARCH=${{ matrix.env.ARCH }} \
             --env PYVER=${{ matrix.env.PYVER }} \
-            python:${{ matrix.env.PYVER }}-slim /python3-macos/docker-build.sh    
-    - name: Check files
-      run: |
-        ls -R        
+            python:${{ matrix.env.PYVER }}-slim /python3-macos/docker-build.sh           
