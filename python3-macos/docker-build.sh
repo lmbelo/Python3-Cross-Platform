@@ -6,7 +6,9 @@ set -x
 apt-get update -y
 apt-get install -y clang llvm-dev libxml2-dev uuid-dev libssl-dev bash patch make tar xz-utils bzip2 gzip sed cpio libbz2-dev
 
-export MACOS_SDK=/android-ndk
+export MACOS_SDK=/macos-sdk
+
+ls -l
 
 if [ ! -d "$ANDROID_NDK" ] ; then
     cd /cross-toolchain/tarballs
