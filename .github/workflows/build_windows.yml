@@ -46,8 +46,7 @@ jobs:
         ls -l PCBuild\amd64
     - name: Copy distribution
       run: |
-        robocopy PCBuild\amd64 usr * /s
-        ls        
+        robocopy /S PCBuild\amd64 usr       
     - name: Create package
       id: create_package
       run: |        
