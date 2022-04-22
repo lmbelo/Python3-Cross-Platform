@@ -4,7 +4,7 @@ set -e
 set -x
 
 apt-get update -y
-apt-get install clang llvm-dev libxml2-dev uuid-dev libssl-dev bash patch make tar xz-utils bzip2 gzip sed cpio libbz2-dev
+apt-get install -y clang llvm-dev libxml2-dev uuid-dev libssl-dev bash patch make tar xz-utils bzip2 gzip sed cpio libbz2-dev
 
 export MACOS_SDK=/android-ndk
 
