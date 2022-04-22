@@ -4,9 +4,15 @@ set -e
 set -x
 
 apt-get update -y
-apt-get install -y git curl clang llvm-dev libxml2-dev uuid-dev libssl-dev bash patch make tar xz-utils bzip2 gzip sed cpio libbz2-dev
+apt-get install -y git curl cmake patch libssl-devel lzma-devel libxml2-devel llvm-devel
 
-cd python3-macos/cross-toolchain/tarballs
+curl -sSL https://cmake.org/files/v3.14/cmake-3.14.5-Linux-x86_64.tar.gz | sudo tar -xzC /opt
+export PATH=/opt/cmake-3.14.5-Linux-x86_64/bin:$PATH
+
+cd python3-macos/cross-toolchain
+./build_clang.sh
+
+cd tarballs
 curl -vLO https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.14.sdk.tar.xz
 cd ../
 ./build.sh
