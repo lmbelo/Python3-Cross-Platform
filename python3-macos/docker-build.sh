@@ -10,12 +10,11 @@ cd python3-macos/cross-toolchain/tarballs
 curl -vLO https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.14.sdk.tar.xz
 cd ../../
 ./build.sh
+ls -R
 cd ../
 
 export MACOS_SDK=/cross-toolchain/osxcross/bin
 
-ls -l /cross-toolchain/osxcross
-
 cd /python3-macos
 
-./build.sh "$@"
+#./build.sh "$@"
