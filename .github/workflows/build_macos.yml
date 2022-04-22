@@ -30,8 +30,8 @@ jobs:
     - name: Checkout osxcross repo
       uses: actions/checkout@v2
       with:
-        repostiory: tpoechtrager/osxcross
-        path: ./osxcross
+        repository: tpoechtrager/osxcross
+        path: ./cross-toolchain
     - name: Check files
       run: |
         ls -R
