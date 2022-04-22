@@ -12,7 +12,7 @@ export PATH=/opt/cmake-3.14.5-Linux-x86_64/bin:$PATH
 cd python3-macos/cross-toolchain/tarballs
 curl -vLO https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.14.sdk.tar.xz
 cd ../
-./build.sh
+UNATTENDED=1 ./build.sh
 ls -R
 cd ../../
 
