@@ -9,7 +9,7 @@ apt-get install -y git curl clang llvm-dev libxml2-dev uuid-dev libssl-dev bash 
 export MACOS_SDK=/macos-sdk
 
 if [ ! -d "$ANDROID_NDK" ] ; then
-    curl -vLO https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.14.sdk.tar.xz --output python3-macos/cross-toolchain/tarballs/MacOSX10.14.sdk.tar.xz
+    curl -vLO https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.14.sdk.tar.xz > /python3-macos/cross-toolchain/tarballs/MacOSX10.14.sdk.tar.xz
 fi
 
 ls python3-macos/cross-toolchain/tarballs
