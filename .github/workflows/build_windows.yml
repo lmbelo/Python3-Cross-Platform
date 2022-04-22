@@ -32,17 +32,19 @@ jobs:
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
-    - name: Checkout python repo
-      uses: actions/checkout@v3
-      with:
-        repository: python/cpython
-        ref: v${{ matrix.env.PYVER }}
+    #- name: Checkout python repo
+    #  uses: actions/checkout@v3
+    #  with:
+    #    repository: python/cpython
+    #    ref: v${{ matrix.env.PYVER }}
     - name: Building      
-      run: |      
-        PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e -c Release   
+    #  run: |      
+    #    PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e -c Release   
     - name: Create package
       run: |
-        7z a -r python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip PCBuild\*
+        cd C:\msys64\mingw32\bin
+        ls
+      #  7z a python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip PCBuild\*
       #run: |       
       #  if (Test-Path -Path "PCBuild\amd64") {
       #    Rename-Item PCBuild\amd64 ${{ matrix.env.ARCH }}
