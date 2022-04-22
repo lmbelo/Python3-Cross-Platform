@@ -51,8 +51,7 @@ jobs:
     - name: Create package
       id: create_package
       run: |        
-        7z a python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip usr
-        ls
+        7z a python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip usr        
     - name: Save build
       uses: actions/upload-artifact@v2
       with:
