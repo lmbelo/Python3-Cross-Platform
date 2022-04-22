@@ -40,18 +40,15 @@ jobs:
     - name: Building      
       run: |      
         PCBuild\build.bat -p ${{ matrix.env.ARCH }} -e -c Release   
-    - name: Create package x64
-      if: ${{ matrix.env.ARCH }} == 'x64'
+    - name: Create package
       run: |       
-        Rename-Item PCBuild\amd64 ${{ matrix.env.ARCH }} 
+        if (Test-Path -Path "PCBuild\amd64") {
+          Rename-Item PCBuild\amd64 ${{ matrix.env.ARCH }}
+        } elseif (Test-Path -Path "PCBuild\win32") {
+          Rename-Item PCBuild\win32 ${{ matrix.env.ARCH }}   
+        }         
         cd PCBuild\${{ matrix.env.ARCH }}
-        7z a -t7z python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r 
-    - name: Create package x86
-      if: ${{ matrix.env.ARCH }} == 'Win32'
-      run: |        
-        Rename-Item PCBuild\amd64 ${{ matrix.env.ARCH }} 
-        cd PCBuild\${{ matrix.env.ARCH }}
-        7z a -t7z python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r   
+        7z a -t7z python3-android-${{ matrix.env.PYVER }}-${{ matrix.env.ARCH }}.zip * -r      
     - name: Save build
       uses: actions/upload-artifact@v2
       with:
