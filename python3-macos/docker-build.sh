@@ -4,7 +4,7 @@ set -e
 set -x
 
 apt-get update -y
-apt-get install -y git curl clang llvm-dev libxml2-dev uuid-dev libssl-dev bash patch cmake tar xz-utils bzip2 gzip sed cpio pkg-config libbz2-dev zlib1g-dev
+apt-get install -y git curl wget clang llvm-dev libxml2-dev uuid-dev libssl-dev bash patch cmake tar xz-utils bzip2 gzip sed cpio pkg-config libbz2-dev zlib1g-dev
 
 curl -sSL https://cmake.org/files/v3.14/cmake-3.14.5-Linux-x86_64.tar.gz | tar -xzC /opt
 export PATH=/opt/cmake-3.14.5-Linux-x86_64/bin:$PATH
