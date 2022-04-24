@@ -30,8 +30,6 @@ def ndk_unified_toolchain() -> pathlib.Path:
     if not os.path.exists(ndk_path):
         raise Exception('Path not found')
 
-    raise  Exception('Opa')
-
     return pathlib.Path(ndk_path)
 
 
