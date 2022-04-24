@@ -49,6 +49,9 @@ if [ ${ARCH} = "x86_64" ]; then
 else
     echo "Targeting arch arm64"
 fi
+
+ export PATH=/python3-macos/x86_64/cross-toolchain/target/bin:$PATH
+
 pushd /python3-macos/x86_64/cross-toolchain/target
 ls -R
 popd
