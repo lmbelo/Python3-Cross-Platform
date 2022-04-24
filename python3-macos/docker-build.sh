@@ -50,7 +50,10 @@ else
     echo "Targeting arch arm64"
 fi
 
- export PATH=/python3-macos/x86_64/cross-toolchain/target/bin:$PATH
+export PATH=/python3-macos/x86_64/cross-toolchain/target/bin:$PATH
+export MACOSX_DEPLOYMENT_TARGET=11.1
+osxcross-macports update-cache
+osxcross-macports install ncurses
 
 pushd /python3-macos/x86_64/cross-toolchain/target
 ls -R
