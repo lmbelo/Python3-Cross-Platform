@@ -19,7 +19,7 @@ if [ ${ARCH} = "x86_64" ]; then
     if [ ! -d "$MACOS_NDK" ]; then
         echo "Preparing the MacOS x86_64 NDK"
         ls /python3-macos
-        mkdir /python3-macos/x86_64/cross-toolchain
+        mkdir -p /python3-macos/x86_64/cross-toolchain
         mv /python3-macos/cross-toolchain /python3-macos/x86_64/cross-toolchain
         pushd /python3-macos/x86_64/cross-toolchain
 
