@@ -21,7 +21,7 @@ if [ ${ARCH} = "x86_64" ]; then
 
         #echo "Downloading the MacOS NDK"
         pushd /python3-macos/x86_64
-         Try to download from our private resource
+        # Try to download from our private resource
         wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1IQKjdh4gAy4_M1NtM_T8yS3EspQIAFc2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1IQKjdh4gAy4_M1NtM_T8yS3EspQIAFc2" -O osxcross.tar.xz && rm -rf /tmp/cookies.txt
         tar --no-same-owner -xf osxcross.tar.xz 
         mv osxcross cross-toolchain       
