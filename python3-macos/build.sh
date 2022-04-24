@@ -20,7 +20,7 @@ if [ ! -d $SRCDIR ]; then
     popd
 fi
 
-cp -r MacOS $SRCDIR
+cp -R MacOS $SRCDIR
 pushd $SRCDIR
 which python
 python -m pip install dataclasses
