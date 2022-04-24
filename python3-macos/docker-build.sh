@@ -26,6 +26,9 @@ if [ ${ARCH} = "x86_64" ]; then
         tar --no-same-owner -xf osxcross.tar.xz 
         mv osxcross cross-toolchain       
         popd
+        pushd /python3-macos/x86_64/cross-toolchain
+        UNATTENDED=1 ./build.sh
+        popd
 
         # else we create the ndk
         if [ ! -d "$MACOS_NDK" ]; then
