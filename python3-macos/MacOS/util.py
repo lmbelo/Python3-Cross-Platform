@@ -27,10 +27,11 @@ def ndk_unified_toolchain() -> pathlib.Path:
     if not ndk_path:
         raise Exception('Requires environment variable $MACOS_NDK')
 
-    if not os.path.exists(ndk_path):
+    path = pathlib.Path(ndk_path)
+    if not path.exists():
         raise Exception('Path not found')
 
-    return pathlib.Path(ndk_path)
+    return path
 
 
 def env_vars(target_arch_name: str) -> Dict[str, str]:

@@ -10,12 +10,10 @@ apt-get install -y git curl wget clang llvm-dev libxml2-dev uuid-dev libssl-dev 
 curl -sSL https://cmake.org/files/v3.14/cmake-3.14.5-Linux-x86_64.tar.gz | tar -xzC /opt
 export PATH=/opt/cmake-3.14.5-Linux-x86_64/bin:$PATH
 
-echo "$PWD"
-
 if [ ${ARCH} = "x86_64" ]; then
     echo "Targeting arch x86_64"
     export MACOS_NDK=/python3-macos/x86_64/cross-toolchain/target/bin
-
+    
     # if we don't have the ndk, then we create it (or download it)
     if [ ! -d "$MACOS_NDK" ]; then
         echo "Preparing the MacOS x86_64 NDK"
