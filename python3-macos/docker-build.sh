@@ -17,7 +17,7 @@ ls -R
 cd ../../
 
 cd python3-macos/cross-toolchain/target
-ls -r
+ls -R
 cd ../../../
 
 export MACOS_SDK=/cross-toolchain/osxcross/bin
