@@ -16,7 +16,7 @@ UNATTENDED=1 ./build.sh
 ls -R
 cd ../../
 
-cd /cross-toolchain/osxcross/bin
+cd python3-macos/cross-toolchain/target
 ls -r
 cd ../../../
 

@@ -19,7 +19,7 @@ class Arch:
 
 
 ARCHITECTURES = {
-    'x86_64': Arch('x86_64-apple-darwin',),
+    'x86_64': Arch('x86_64-apple-darwin20.2',),
 }
 
 def ndk_unified_toolchain() -> pathlib.Path:
