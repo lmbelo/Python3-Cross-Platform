@@ -46,7 +46,9 @@ if [ ${ARCH} = "x86_64" ]; then
 else
     echo "Targeting arch arm64"
 fi
-
+pushd /python3-macos/x86_64/cross-toolchain/target/bin
+ls -R
+popd
 cd /python3-macos
 
 ./build.sh "$@"
