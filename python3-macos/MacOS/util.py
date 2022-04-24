@@ -51,8 +51,6 @@ def env_vars(target_arch_name: str) -> Dict[str, str]:
         'PKG_CONFIG': f'{CLANG_PREFIX}/{target_arch}-pkg-config',
         'RELEASE': 'yes',
 
-        '': ,
-
         'PYTHONPATH': str(BASE),
     }
 
