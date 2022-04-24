@@ -76,9 +76,10 @@ class LibUUID(Package):
 
 class NCurses(Package):
     #source = 'https://invisible-mirror.net/archives/ncurses/ncurses-6.2.tar.gz'
-    source = 'https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.2.tar.gz'
+    source = 'https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.3.tar.gz'
     # Not stripping the binaries as there is no easy way to specify the strip program for Android
-    configure_args = ['--without-ada', '--enable-widec', '--without-debug', '--without-cxx-binding', '--disable-stripping']
+    configure_args = ['--without-cxx', '--without-cxx-binding', '--without-ada', '--without-progs', '--without-curses-h', '--without-debug', 
+                      '--enable-widec', '--disable-stripping']
 
 class OpenSSL(Package):
     source = 'https://www.openssl.org/source/openssl-3.0.2.tar.gz'
