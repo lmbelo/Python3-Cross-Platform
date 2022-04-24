@@ -30,7 +30,8 @@ def ndk_unified_toolchain() -> pathlib.Path:
     if not ndk_path:
         raise Exception('Requires environment variable $ANDROID_NDK')
     ndk = pathlib.Path(ndk_path)
-
+    if not os.path.exists(ndk):
+        raise Exception('Environment variable path not found' + '   ' + ndk_path + '  ' + str(ndk)) 
     HOST_OS = os.uname().sysname.lower()
 
     path = ndk / 'toolchains' / 'llvm' / 'prebuilt' / f'{HOST_OS}-x86_64' / 'bin'
