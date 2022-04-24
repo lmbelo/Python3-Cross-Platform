@@ -16,7 +16,7 @@ popd
 UNATTENDED=1 ./build.sh
 popd
 
-export MACOS_SDK=/cross-toolchain/target/bin
+export MACOS_NDK=/python3-macos/cross-toolchain/target/bin
 
 cd /python3-macos
 

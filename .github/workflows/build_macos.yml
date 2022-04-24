@@ -41,4 +41,17 @@ jobs:
         docker run --rm -v $(pwd):/python3-macos \
             --env ARCH=${{ matrix.env.ARCH }} \
             --env PYVER=${{ matrix.env.PYVER }} \
-            python:${{ matrix.env.PYVER }}-slim /python3-macos/docker-build.sh           
+            python:${{ matrix.env.PYVER }}-slim /python3-macos/docker-build.sh        
+    - name: Create package
+      id: create_package
+      run: |
+        sudo apt-get -y update && sudo apt-get -y install libarchive-tools xz-utils
+        package_filename=python3-macos-${{ matrix.env.PYVER }}.tar.xz
+        # sudo needed as files created by docker may not be readable by the current user
+        sudo bsdtar --xz -cf $package_filename *
+        echo ::set-output name=package_filename::$package_filename
+    - name: Save build
+      uses: actions/upload-artifact@v2
+      with:
+        path: ${{ steps.create_package.outputs.package_filename }}
+        if-no-files-found: error  

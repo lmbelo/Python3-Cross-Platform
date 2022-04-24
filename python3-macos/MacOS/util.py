@@ -23,13 +23,11 @@ ARCHITECTURES = {
 }
 
 def ndk_unified_toolchain() -> pathlib.Path:
-    sdk_path = os.getenv('MACOS_SDK')
-    if not sdk_path:
-        raise Exception('Requires environment variable $ANDROID_NDK')
+    ndk_path = os.getenv('MACOS_NDK')
+    if not ndk_path:
+        raise Exception('Requires environment variable $MACOS_NDK')
 
-    sdk = pathlib.Path(sdk_path)
-
-    return sdk
+    return pathlib.Path(ndk_path)
 
 
 def env_vars(target_arch_name: str) -> Dict[str, str]:
