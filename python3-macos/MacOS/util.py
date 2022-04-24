@@ -39,7 +39,7 @@ def env_vars(target_arch_name: str) -> Dict[str, str]:
         # Compilers
         'CC': f'{CLANG_PREFIX}/o64-clang',
         'CXX': f'{CLANG_PREFIX}/o64-clang++',
-        'CPP': f'{CLANG_PREFIX}/{target_arch}-pkg-config',
+        'CPP': f'{CLANG_PREFIX}/o64-clang -E',
 
         # Compiler flags
         'CPPFLAGS': f'-I{SYSROOT}/usr/include',
