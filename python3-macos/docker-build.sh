@@ -15,7 +15,7 @@ cd ../
 #UNATTENDED=1 ./build.sh
 cd ../../
 
-export MACOS_SDK=/cross-toolchain/target/bin
+export MACOS_SDK=/cross-toolchain
 
 cd /python3-macos
 
