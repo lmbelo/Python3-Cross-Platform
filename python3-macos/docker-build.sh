@@ -21,7 +21,7 @@ if [ ${ARCH} = "x86_64" ]; then
         ls /python3-macos
         mkdir -p /python3-macos/x86_64/cross-toolchain
         # We move the cross-toolchain to the target arch folder
-        mv /python3-macos/cross-toolchain /python3-macos/x86_64/cross-toolchain
+        mv /python3-macos/cross-toolchain /python3-macos/x86_64
 
         ls -L /python3-macos/x86_64/cross-toolchain
                 
