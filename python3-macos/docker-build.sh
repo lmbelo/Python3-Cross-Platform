@@ -13,7 +13,7 @@ pushd python3-macos/cross-toolchain
 pushd tarballs
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ojmEgjQbI_N22s07hGlG4tlYkLFERKe8' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ojmEgjQbI_N22s07hGlG4tlYkLFERKe8" -O MacOSX11.1.sdk.tar.bz2 && rm -rf /tmp/cookies.txt
 popd
-#UNATTENDED=1 ./build.sh
+UNATTENDED=1 ./build.sh
 popd
 
 export MACOS_SDK=/cross-toolchain/target/bin

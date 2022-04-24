@@ -29,9 +29,6 @@ def ndk_unified_toolchain() -> pathlib.Path:
 
     sdk = pathlib.Path(sdk_path)
 
-    if not os.path.exists(sdk):
-        raise Exception('Environment variable path not found' + '   ' + sdk_path + '  ' + str(sdk)) 
-
     return sdk
 
 
