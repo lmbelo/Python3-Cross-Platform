@@ -43,8 +43,8 @@ def env_vars(target_arch_name: str) -> Dict[str, str]:
 
         # Compiler flags
         'CPPFLAGS': f'-I{SYSROOT}/usr/include',
-        'CFLAGS': '-fPIC',
-        'CXXFLAGS': '-fPIC',
+        #'CFLAGS': '-fPIC',
+        #'CXXFLAGS': '-fPIC',
         'LDFLAGS': f'-L{SYSROOT}/usr/lib -pie',        
 
         # pkg-config settings
