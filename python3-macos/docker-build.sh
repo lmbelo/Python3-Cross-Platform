@@ -13,7 +13,7 @@ export PATH=/opt/cmake-3.14.5-Linux-x86_64/bin:$PATH
 if [ ${ARCH} = "x86_64" ]; then
     echo "Targeting arch x86_64"
     export MACOS_NDK=/python3-macos/x86_64/cross-toolchain/target/bin
-    
+
     # if we don't have the ndk, then we create it (or download it)
     if [ ! -d "$MACOS_NDK" ]; then
         echo "Preparing the MacOS x86_64 NDK"
@@ -21,12 +21,12 @@ if [ ${ARCH} = "x86_64" ]; then
         # We move the cross-toolchain to the target arch folder
         mv /python3-macos/cross-toolchain /python3-macos/x86_64
 
-        echo "Downloading the MacOS NDK"
-        pushd /python3-macos/x86_64/cross-toolchain
+        #echo "Downloading the MacOS NDK"
+        #pushd /python3-macos/x86_64/cross-toolchain
         # Try to download from our private resource
-        wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1CwDi0nCTdzjDmS6r4MYziZiLq51fBIIZ' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1CwDi0nCTdzjDmS6r4MYziZiLq51fBIIZ" -O target.tar.xz && rm -rf /tmp/cookies.txt
-        tar --no-same-owner -xf target.tar.xz        
-        popd
+        #wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1CwDi0nCTdzjDmS6r4MYziZiLq51fBIIZ' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1CwDi0nCTdzjDmS6r4MYziZiLq51fBIIZ" -O target.tar.xz && rm -rf /tmp/cookies.txt
+        #tar --no-same-owner -xf target.tar.xz        
+        #popd
 
         # else we create the ndk
         if [ ! -d "$MACOS_NDK" ]; then
