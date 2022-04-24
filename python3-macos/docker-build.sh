@@ -16,8 +16,8 @@ if [ ${ARCH} = "x86_64" ]; then
     export MACOS_NDK=/python3-macos/x86_64/cross-toolchain/target/bin
 
     # if we don't have the ndk, then we create it (or download it)
-    if [ ! -d "$MACOS_NDK" ] ; then
-        echo "Creating the MacOS NDK"
+    if [ ! -d "$MACOS_NDK" ]; then
+        echo "Preparing the MacOS x86_64 NDK"
         mv /python3-macos/cross-toolchain /python3-macos/x86_64/cross-toolchain
         pushd /python3-macos/x86_64/cross-toolchain
 
@@ -28,7 +28,7 @@ if [ ${ARCH} = "x86_64" ]; then
         ls -L
 
         # else we create the ndk
-        if [ ! -d "$MACOS_NDK" ] ; then
+        if [ ! -d "$MACOS_NDK" ]; then
             echo "Building the MacOS NDK"
             pushd tarballs
             # Download the MacOS SDK from our private resource
@@ -41,7 +41,7 @@ if [ ${ARCH} = "x86_64" ]; then
         echo "MacOS NDK found"
     fi    
 else
-
+    echo "Targeting arch arm64"
 fi
 
 cd /python3-macos
