@@ -23,11 +23,14 @@ ARCHITECTURES = {
 }
 
 def ndk_unified_toolchain() -> pathlib.Path:
-    ndk_path = os.getenv('MACOS_SDK')
-    if not ndk_path:
+    sdk_path = os.getenv('MACOS_SDK')
+    if not sdk_path:
         raise Exception('Requires environment variable $ANDROID_NDK')
 
-    return pathlib.Path(ndk_path)
+    if not os.path.exists(sdk_path):
+        raise Exception('Environment variable path not found') 
+
+    return pathlib.Path(sdk_path)
 
 
 def env_vars(target_arch_name: str) -> Dict[str, str]:
@@ -37,7 +40,7 @@ def env_vars(target_arch_name: str) -> Dict[str, str]:
 
     env = {
         # Compilers
-        'CC': f'{CLANG_PREFIX}/o64-clang',
+        'CC' : f'{CLANG_PREFIX}/o64-clang',
         'CXX': f'{CLANG_PREFIX}/o64-clang++',
         'CPP': f'{CLANG_PREFIX}/o64-clang -E',
 
