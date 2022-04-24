@@ -16,8 +16,12 @@ UNATTENDED=1 ./build.sh
 ls -R
 cd ../../
 
+cd /cross-toolchain/osxcross/bin
+ls -r
+cd ../../../
+
 export MACOS_SDK=/cross-toolchain/osxcross/bin
 
 cd /python3-macos
 
-#./build.sh "$@"
+./build.sh "$@"

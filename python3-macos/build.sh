@@ -20,10 +20,10 @@ if [ ! -d $SRCDIR ]; then
     popd
 fi
 
-cp -r Linux $SRCDIR
+cp -r MacOS $SRCDIR
 pushd $SRCDIR
-patch -Np1 -i ./Linux/unversioned-libpython.patch
-autoreconf -ifv
+#patch -Np1 -i ./Linux/unversioned-libpython.patch
+#autoreconf -ifv
 which python
 python -m pip install dataclasses
 ./Linux/build_deps.py $COMMON_ARGS
@@ -31,5 +31,5 @@ python -m pip install dataclasses
 make
 make install DESTDIR="$THIS_DIR/build"
 popd
-cp -r $SRCDIR/Linux/sysroot/usr/share/terminfo build/usr/share/
+cp -r $SRCDIR/MacOS/sysroot/usr/share/terminfo build/usr/share/
 cp devscripts/env.sh build/

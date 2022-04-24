@@ -10,20 +10,20 @@ SYSROOT = BASE / 'sysroot'
 
 @dataclass
 class Arch:
-    LINUX_TARGET: str
+    MACOS_TARGET: str
     BINUTILS_PREFIX: Optional[str] = None
 
     @property
     def binutils_prefix(self) -> str:
-        return self.BINUTILS_PREFIX or self.LINUX_TARGET
+        return self.BINUTILS_PREFIX or self.MACOS_TARGET
 
 
 ARCHITECTURES = {
-    'x86_64': Arch('x86_64-linux-gnu',),
+    'x86_64': Arch('x86_64-apple-darwin',),
 }
 
 def ndk_unified_toolchain() -> pathlib.Path:
-    ndk_path = os.getenv('LINUX_NDK')
+    ndk_path = os.getenv('MACOS_SDK')
     if not ndk_path:
         raise Exception('Requires environment variable $ANDROID_NDK')
 
