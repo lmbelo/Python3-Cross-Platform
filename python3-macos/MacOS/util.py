@@ -37,26 +37,28 @@ def env_vars(target_arch_name: str) -> Dict[str, str]:
 
     env = {
         # Compilers
-        'CC': f'{CLANG_PREFIX}/clang',
-        'CXX': f'{CLANG_PREFIX}/clang++',
-        'CPP': f'{CLANG_PREFIX}/clang -E',
+        'CC': f'{CLANG_PREFIX}/o64-clang',
+        'CXX': f'{CLANG_PREFIX}/o64-clang++',
+        'CPP': f'{CLANG_PREFIX}/{target_arch}-pkg-config',
 
         # Compiler flags
         'CPPFLAGS': f'-I{SYSROOT}/usr/include',
         'CFLAGS': '-fPIC',
-        'CXXLAGS': '-fPIC',
-        'LDFLAGS': f'-L{SYSROOT}/usr/lib -pie',
+        'CXXFLAGS': '-fPIC',
+        'LDFLAGS': f'-L{SYSROOT}/usr/lib -pie',        
 
         # pkg-config settings
-        'PKG_CONFIG_SYSROOT_DIR': str(SYSROOT),
-        'PKG_CONFIG_LIBDIR': str(SYSROOT / 'usr' / 'lib' / 'pkgconfig'),
+        'PKG_CONFIG': f'{CLANG_PREFIX}/{target_arch}-pkg-config',
+        'RELEASE': 'yes',
+
+        '': ,
 
         'PYTHONPATH': str(BASE),
     }
 
-    for prog in ('ar', 'as', 'nm', 'objcopy', 'objdump', 'ranlib', 'readelf', 'strip'):
-        env[prog.upper()] = str(ndk_unified_toolchain() / f'llvm-{prog}')
-    env['ld'] = str(ndk_unified_toolchain() / 'lld') 
+    for prog in ('ar', 'as', 'nm', 'ObjectDump', 'ranlib', 'readelf', 'strip', 'check_dylib', 'ld'):
+        env[prog.upper()] = str(ndk_unified_toolchain() / f'{target_arch}-')
+    #env['ld'] = str(ndk_unified_toolchain() / 'lld') 
 
     return env
 

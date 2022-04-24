@@ -22,12 +22,10 @@ fi
 
 cp -r MacOS $SRCDIR
 pushd $SRCDIR
-#patch -Np1 -i ./Linux/unversioned-libpython.patch
-#autoreconf -ifv
 which python
 python -m pip install dataclasses
-./Linux/build_deps.py $COMMON_ARGS
-./Linux/configure.py $COMMON_ARGS --prefix=/usr "$@"
+./MacOS/build_deps.py $COMMON_ARGS
+./MacOS/configure.py $COMMON_ARGS --prefix=/usr "$@"
 make
 make install DESTDIR="$THIS_DIR/build"
 popd

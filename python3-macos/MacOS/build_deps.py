@@ -30,7 +30,7 @@ class Package:
             './configure',
             '--prefix=/usr',
             '--libdir=/usr/bin',
-            '--host=' + self.target_arch.LINUX_TARGET,
+            '--host=' + self.target_arch.MACOS_TARGET,
             '--disable-shared',
         ] + getattr(self, 'configure_args', []))
 
@@ -122,7 +122,7 @@ class ZLib(Package):
 
     def configure(self):
         os.environ.update({
-            'CHOST': self.target_arch.LINUX_TARGET + '-',
+            'CHOST': self.target_arch.MACOS_TARGET + '-',
             'CFLAGS': ' '.join([os.environ['CPPFLAGS'], os.environ['CFLAGS']]),
         })
 
