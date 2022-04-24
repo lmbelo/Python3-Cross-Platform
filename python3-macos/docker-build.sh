@@ -9,7 +9,7 @@ apt-get install -y git curl wget clang llvm-dev libxml2-dev uuid-dev libssl-dev 
 curl -sSL https://cmake.org/files/v3.14/cmake-3.14.5-Linux-x86_64.tar.gz | tar -xzC /opt
 export PATH=/opt/cmake-3.14.5-Linux-x86_64/bin:$PATH
 
-cd python3-macos/cross-toolchain/tarballs
+cd python3-macos/MacOS/cross-toolchain/tarballs
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ojmEgjQbI_N22s07hGlG4tlYkLFERKe8' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ojmEgjQbI_N22s07hGlG4tlYkLFERKe8" -O MacOSX11.1.sdk.tar.bz2 && rm -rf /tmp/cookies.txt
 cd ../
 #UNATTENDED=1 ./build.sh
