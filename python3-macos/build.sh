@@ -24,7 +24,7 @@ cp -R MacOS $SRCDIR
 pushd $SRCDIR
 which python
 python -m pip install dataclasses
-#./MacOS/build_deps.py $COMMON_ARGS
+./MacOS/build_deps.py $COMMON_ARGS
 #./MacOS/configure.py $COMMON_ARGS --prefix=/usr "$@"
 #make
 #make install DESTDIR="$THIS_DIR/build"
