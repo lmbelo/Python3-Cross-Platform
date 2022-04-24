@@ -27,6 +27,7 @@ def ndk_unified_toolchain() -> pathlib.Path:
     if not sdk_path:
         raise Exception('Requires environment variable $ANDROID_NDK')
 
+    print(pathlib.Path(sdk_path))
     if not os.path.exists(pathlib.Path(sdk_path)):
         raise Exception('Environment variable path not found') 
 
