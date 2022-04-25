@@ -27,6 +27,7 @@ if [ ${ARCH} = "x86_64" ]; then
         mv osxcross cross-toolchain       
         popd
         pushd /python3-macos/x86_64/cross-toolchain
+        UNATTENDED=1 ./build_clang.sh
         UNATTENDED=1 OSX_VERSION_MIN=10.15 ./build.sh
         popd
 
