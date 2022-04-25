@@ -22,6 +22,8 @@ fi
 
 cp -R MacOS $SRCDIR
 pushd $SRCDIR
+patch -Np1 -i ./MacOS/cross-build.patch
+autoreconf -ifv
 which python
 python -m pip install dataclasses
 #./MacOS/build_deps.py $COMMON_ARGS
