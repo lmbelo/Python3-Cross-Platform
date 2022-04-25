@@ -49,9 +49,9 @@ class BZip2(Package):
     def make(self):
         self.run([
             'make', 'libbz2.a',
-            f'CC={os.environ["CC"]}',
+            #f'CC={os.environ["CC"]}',
             #f'CFLAGS={os.environ["CFLAGS"]} {os.environ["CPPFLAGS"]}',
-            f'AR={os.environ["AR"]}',
+            #f'AR={os.environ["AR"]}',
             #f'RANLIB={os.environ["RANLIB"]}',
         ])
 
@@ -124,7 +124,7 @@ class ZLib(Package):
     def configure(self):
         os.environ.update({
             'CHOST': self.target_arch.MACOS_TARGET + '-',
-            'CFLAGS': ' '.join([os.environ['CPPFLAGS'], os.environ['CFLAGS']]),
+            #'CFLAGS': ' '.join([os.environ['CPPFLAGS'], os.environ['CFLAGS']]),
         })
 
         self.run([
@@ -159,7 +159,7 @@ def main():
 
     package_classes = (
         # ncurses is a dependency of readline
-        #NCurses,
+        NCurses,
         BZip2, GDBM, LibFFI, LibUUID, OpenSSL, Readline, SQLite, XZ, ZLib,
     )
 
