@@ -12,11 +12,11 @@ def main():
     cmd = [
         'bash', './configure',
         '--host=' + ARCHITECTURES[args.target_arch_name].MACOS_TARGET,
-        '--build=x86_64-linux-gnu',
+        #'--build=x86_64-linux-gnu',
         '--enable-shared',
-        'ac_cv_file__dev_ptmx=yes',
-        'ac_cv_file__dev_ptc=no',
-        'ac_cv_buggy_getaddrinfo=no',  # for IPv6 functionality
+        #'ac_cv_file__dev_ptmx=yes',
+        #'ac_cv_file__dev_ptc=no',
+        #'ac_cv_buggy_getaddrinfo=no',  # for IPv6 functionality
     ]
 
     os.execvp('bash', cmd + remaining)
