@@ -4,7 +4,7 @@ set -e
 set -x
 
 apt-get update -y
-apt-get install -y autoconf autoconf-archive automake curl wget patch tar xz-utils bzip2 gzip make libssl-dev lzma-dev libxml2-dev
+apt-get install -y autoconf autoconf-archive automake curl wget patch tar xz-utils bzip2 gzip clang make libssl-dev lzma-dev libxml2-dev
 
 # We must upgrade CMake to >= 3.2.3 first
 curl -sSL https://cmake.org/files/v3.14/cmake-3.14.5-Linux-x86_64.tar.gz | tar -xzC /opt
@@ -27,7 +27,7 @@ if [ ${ARCH} = "x86_64" ]; then
         mv osxcross cross-toolchain       
         popd
         pushd /python3-macos/x86_64/cross-toolchain
-        UNATTENDED=1 ./build_clang.sh
+        #UNATTENDED=1 ./build_clang.sh
         UNATTENDED=1 OSX_VERSION_MIN=10.15 ./build.sh
         popd
 
