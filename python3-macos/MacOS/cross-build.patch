@@ -1,6 +1,6 @@
-diff -urN cp3.9.9-a/configure.ac cp3.9.9-b/configure.ac
---- cp3.9.9-a/configure.ac	2021-11-15 09:43:00.000000000 -0800
-+++ cp3.9.9-b/configure.ac	2022-04-25 15:48:29.110980221 -0700
+diff -urN cp3.x.x-a/configure.ac cp3.x.x-b/configure.ac
+--- cp3.x.x-a/configure.ac	2021-11-15 09:43:00.000000000 -0800
++++ cp3.x.x-b/configure.ac	2022-04-25 16:12:53.236011975 -0700
 @@ -387,6 +387,7 @@
  then
      # avoid using uname for cross builds
@@ -14,26 +14,26 @@ diff -urN cp3.9.9-a/configure.ac cp3.9.9-b/configure.ac
  	    ac_sys_system=VxWorks
  	    ;;
 +	*-*-darwin*)
-+	    ac_sys_system=Darwin  
++	    ac_sys_system=Darwin
 +	    ac_sys_release=$(echo $host | sed -n 's/.*-[^0-9]\+\([0-9]\+\)/\1/p')
 +	    if test -z "$ac_sys_release"; then
-+		# A reasonable default.
-+		ac_sys_release=11
++	            # A reasonable default.
++	            ac_sys_release=11
 +	    fi
-+	    # Use the last released version number for old versions.
++            # Use the last released version number for old versions.
 +	    if test "$ac_sys_release" = "9" ; then
-+		ac_sys_release=9.8
++		    ac_sys_release=9.8
 +	    elif test "$ac_sys_release" = "10" ; then
-+		ac_sys_release=10.8
++		    ac_sys_release=10.8
 +	    elif test "$ac_sys_release" = "11" ; then
-+		ac_sys_release=11.4.0
++	            ac_sys_release=11.4.0
 +	    elif test "$ac_sys_release" = "12" ; then
-+		ac_sys_release=12.0.0
++		    ac_sys_release=12.0.0
 +	    else
-+		# ..and .0.0 for unknown versions.
-+	        ac_sys_release=${ac_sys_release}.0.0
++		    # ..and .0.0 for unknown versions.
++		    ac_sys_release=${ac_sys_release}.0.0
 +	    fi
-+	;;
++	    ;; 
  	*)
  		# for now, limit cross builds to known configurations
  		MACHDEP="unknown"
@@ -43,21 +43,22 @@ diff -urN cp3.9.9-a/configure.ac cp3.9.9-b/configure.ac
      else
  	ac_sys_system=`uname -s`
  	if test "$ac_sys_system" = "AIX" \
-@@ -452,6 +473,9 @@
+@@ -449,6 +470,9 @@
+ 	*-*-cygwin*)
+ 		_host_cpu=
+ 		;;
++	*-*-darwin*)
++	        _host_cpu=$host_cpu
++	        ;;
  	*-*-vxworks*)
  		_host_cpu=$host_cpu
  		;;
-+	*-*-darwin*)
-+		_host_cpu=$host_cpu
-+		;;
- 	*)
- 		# for now, limit cross builds to known configurations
- 		MACHDEP="unknown"
-@@ -1601,6 +1625,26 @@
+@@ -1601,6 +1625,27 @@
  AC_SUBST(CFLAGS_NODIST)
  AC_SUBST(LDFLAGS_NODIST)
  
-+if test "x$cross_compiling" = xyes; then
++if test "x$cross_compiling" = xyes; 
++then
 +    function cross_arch
 +    {
 +        case $host in
@@ -80,7 +81,7 @@ diff -urN cp3.9.9-a/configure.ac cp3.9.9-b/configure.ac
  # The -arch flags for universal builds on macOS
  UNIVERSAL_ARCH_FLAGS=
  AC_SUBST(UNIVERSAL_ARCH_FLAGS)
-@@ -1979,7 +2023,7 @@
+@@ -1979,7 +2024,7 @@
                      ;;
                  esac
              else
@@ -89,7 +90,7 @@ diff -urN cp3.9.9-a/configure.ac cp3.9.9-b/configure.ac
                  then
                      # 10.4 was the first release to support Intel archs
                      cur_target="10.4"
-@@ -2474,7 +2518,7 @@
+@@ -2474,7 +2519,7 @@
      if test "${enable_universalsdk}"; then
  	    :
      else
@@ -98,7 +99,7 @@ diff -urN cp3.9.9-a/configure.ac cp3.9.9-b/configure.ac
      fi
      LIBTOOL_CRUFT=$LIBTOOL_CRUFT' -install_name $(PYTHONFRAMEWORKINSTALLDIR)/Versions/$(VERSION)/$(PYTHONFRAMEWORK)'
      LIBTOOL_CRUFT=$LIBTOOL_CRUFT' -compatibility_version $(VERSION) -current_version $(VERSION)';;
-@@ -2499,7 +2543,7 @@
+@@ -2499,7 +2544,7 @@
      ]])],[ac_osx_32bit=yes],[ac_osx_32bit=no],[ac_osx_32bit=yes])
  
      if test "${ac_osx_32bit}" = "yes"; then
@@ -107,7 +108,7 @@ diff -urN cp3.9.9-a/configure.ac cp3.9.9-b/configure.ac
      	i386)
      		MACOSX_DEFAULT_ARCH="i386"
      		;;
-@@ -2511,7 +2555,7 @@
+@@ -2511,7 +2556,7 @@
      		;;
      	esac
      else
