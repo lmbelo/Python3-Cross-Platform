@@ -1,6 +1,6 @@
 diff -urN cp3.x.x-a/configure.ac cp3.x.x-b/configure.ac
 --- cp3.x.x-a/configure.ac	2021-11-15 09:43:00.000000000 -0800
-+++ cp3.x.x-b/configure.ac	2022-04-25 16:12:53.236011975 -0700
++++ cp3.x.x-b/configure.ac	2022-04-25 16:19:55.175833734 -0700
 @@ -387,6 +387,7 @@
  then
      # avoid using uname for cross builds
@@ -86,7 +86,7 @@ diff -urN cp3.x.x-a/configure.ac cp3.x.x-b/configure.ac
                  esac
              else
 -                if test `/usr/bin/arch` = "i386"
-+                if test "$($ARCH_PROG)" = "i386"; then
++                if test "$($ARCH_PROG)" = "i386";
                  then
                      # 10.4 was the first release to support Intel archs
                      cur_target="10.4"
