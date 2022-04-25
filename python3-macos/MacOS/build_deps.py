@@ -49,10 +49,10 @@ class BZip2(Package):
     def make(self):
         self.run([
             'make', 'libbz2.a',
-            f'CC={os.environ["CC"]}',
-            f'CFLAGS={os.environ["CFLAGS"]} {os.environ["CPPFLAGS"]}',
-            f'AR={os.environ["AR"]}',
-            f'RANLIB={os.environ["RANLIB"]}',
+            #f'CC={os.environ["CC"]}',
+            #f'CFLAGS={os.environ["CFLAGS"]} {os.environ["CPPFLAGS"]}',
+            #f'AR={os.environ["AR"]}',
+            #f'RANLIB={os.environ["RANLIB"]}',
         ])
 
     def make_install(self):
