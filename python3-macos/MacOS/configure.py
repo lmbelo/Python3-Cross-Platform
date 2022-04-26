@@ -16,7 +16,7 @@ def main():
         '--enable-shared',
         #'ac_cv_file__dev_ptmx=yes',
         #'ac_cv_file__dev_ptc=no',
-        #'ac_cv_buggy_getaddrinfo=no',  # for IPv6 functionality
+        'ac_cv_buggy_getaddrinfo=no',  # for IPv6 functionality
     ]
 
     os.execvp('bash', cmd + remaining)
