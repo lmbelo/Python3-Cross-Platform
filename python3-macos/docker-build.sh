@@ -51,7 +51,7 @@ else
     echo "Targeting arch arm64"
 fi
 
-export $PATH:PATH=/python3-macos/x86_64/cross-toolchain/target/bin
+export PATH=$PATH:/python3-macos/x86_64/cross-toolchain/target/bin
 export MACOSX_DEPLOYMENT_TARGET=11.1
 
 #UNATTENDED=1 osxcross-macports update-cache
