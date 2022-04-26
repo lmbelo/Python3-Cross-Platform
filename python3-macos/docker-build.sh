@@ -4,7 +4,7 @@ set -e
 set -x
 
 apt-get update -y
-apt-get install -y git autoconf autoconf-archive automake curl wget patch tar xz-utils bzip2 gzip clang make llvm-dev uuid-dev libssl-dev libbz2-dev lzma-dev libxml2-dev 
+apt-get install -y bash git autoconf autoconf-archive automake curl wget patch tar xz-utils bzip2 gzip clang make llvm-dev uuid-dev libssl-dev libbz2-dev lzma-dev libxml2-dev 
 
 # We must upgrade CMake to >= 3.2.3 first
 curl -sSL https://cmake.org/files/v3.14/cmake-3.14.5-Linux-x86_64.tar.gz | tar -xzC /opt
@@ -51,7 +51,7 @@ else
     echo "Targeting arch arm64"
 fi
 
-export PATH=$PATH:/python3-macos/x86_64/cross-toolchain/target/bin
+export PATH=/python3-macos/x86_64/cross-toolchain/target/bin:$PATH
 export MACOSX_DEPLOYMENT_TARGET=11.1
 
 #UNATTENDED=1 osxcross-macports update-cache
