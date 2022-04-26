@@ -4,6 +4,7 @@ set -e
 set -x
 
 chsh -s /bin/bash
+SHELL=/bin/bash
 
 apt-get update -y
 apt-get install -y bash git autoconf autoconf-archive automake curl wget patch tar xz-utils bzip2 gzip clang make llvm-dev uuid-dev libssl-dev libbz2-dev lzma-dev libxml2-dev
