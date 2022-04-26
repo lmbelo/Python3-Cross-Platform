@@ -26,10 +26,10 @@ patch -Np1 -i ./MacOS/cross-build.patch
 autoreconf -ifv
 which python
 python -m pip install dataclasses
-#./MacOS/build_deps.py $COMMON_ARGS
+./MacOS/build_deps.py $COMMON_ARGS
 ./MacOS/configure.py $COMMON_ARGS --prefix=/usr "$@"
 make
-make install DESTDIR="$THIS_DIR/build"
-popd
-cp -r $SRCDIR/MacOS/sysroot/usr/share/terminfo build/usr/share/
-cp devscripts/env.sh build/
+#make install DESTDIR="$THIS_DIR/build"
+#popd
+#cp -r $SRCDIR/MacOS/sysroot/usr/share/terminfo build/usr/share/
+#cp devscripts/env.sh build/
