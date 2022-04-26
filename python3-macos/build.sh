@@ -26,7 +26,7 @@ patch -Np1 -i ./MacOS/cross-build.patch
 autoreconf -ifv
 which python
 python -m pip install dataclasses
-./MacOS/build_deps.py $COMMON_ARGS
+#./MacOS/build_deps.py $COMMON_ARGS
 ./MacOS/configure.py $COMMON_ARGS --prefix=/usr "$@"
 
 make CC=/python3-macos/x86_64/cross-toolchain/target/bin/o64-clang CXX=/python3-macos/x86_64/cross-toolchain/target/bin/o64-clang++ PKGCONFIG=/python3-macos/x86_64/cross-toolchain/target/bin/x86_64-apple-darwin15-pkg-config RELEASE=yes
