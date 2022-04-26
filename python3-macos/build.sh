@@ -29,7 +29,7 @@ python -m pip install dataclasses
 #./MacOS/build_deps.py $COMMON_ARGS
 ./MacOS/configure.py $COMMON_ARGS --prefix=/usr "$@"
 
-make CC=/python3-macos/x86_64/cross-toolchain/target/bin/o64-clang CXX=/python3-macos/x86_64/cross-toolchain/target/bin/o64-clang++ PKGCONFIG=/python3-macos/x86_64/cross-toolchain/target/bin/x86_64-apple-darwin15-pkg-config RELEASE=yes
+make
 make install DESTDIR="$THIS_DIR/build"
 popd
 cp -r $SRCDIR/MacOS/sysroot/usr/share/terminfo build/usr/share/
